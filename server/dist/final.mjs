@@ -1,15 +1,16 @@
 import express from "express";
-import { renderToPipeableStream } from "react-dom/server";
+import * as reactServerDom from "react-dom/server";
 import App from "../../client/dist/final.mjs";
 import React from "react";
 import path from "path";
 const app = express();
-app.get("/", (req, res) => {
-  const { pipe } = renderToPipeableStream(/* @__PURE__ */ React.createElement(App, null), {
+app.get("/", async (req, res) => {
+  const stream = await reactServerDom.renderToPipeableStream(/* @__PURE__ */ React.createElement(App, null), {
     bootstrapScripts: ["/main.js"],
     onShellReady() {
-      res.setHeader("content-type", "text/html");
-      pipe(res);
+      res.statusCode = 200;
+      res.setHeader("Content-type", "text/html");
+      stream.pipe(res);
     }
   });
 });

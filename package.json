@@ -8,7 +8,7 @@
     "build:server": "node ./server/scripts/server.js",
     "start": "node ./server/dist/final.mjs",
     "dev": "npm run build:client",
-    "node" : "nodemon -e tsx,ts --watch ./client/src --exec npm run dev"
+    "node": "nodemon -e tsx,ts --watch ./client/src --exec npm run dev"
   },
   "author": "",
   "license": "ISC",
@@ -19,7 +19,7 @@
     "esbuild": "0.17.18",
     "express": "^4.18.2",
     "nodemon": "^2.0.22",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react": "^18.3.0-canary-a389046a5-20230512",
+    "react-dom": "^18.3.0-canary-a389046a5-20230512"
   }
 }

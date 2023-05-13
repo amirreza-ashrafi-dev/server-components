@@ -1,4 +1,6 @@
-import React from 'react';
+import React, { Suspense, lazy } from 'react';
+
+const Profile = async () => { return <div>Hello profile</div> };
 
 const App = () => {
     return <html>
@@ -9,8 +11,9 @@ const App = () => {
             <title>React server rendering</title>
         </head>
         <body>
-            <h1 onClick={()=>console.log("Clicked h1")}>react server side renderd</h1>
+            <h1 onClick={() => console.log("Clicked h1")}>react server side renderd</h1>
             <div>this is a test application</div>
+            <Suspense fallback="loading"><Profile /></Suspense>
         </body>
     </html>
 };
